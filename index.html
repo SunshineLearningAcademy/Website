@@ -262,14 +262,9 @@
     /* ---------- Feedback ---------- */
     #feedback { background: var(--white); }
 
-    .feedback-wrap {
-      max-width: 640px;
-      margin: 0 auto;
-      background: var(--cream);
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-    }
+    .feedback-cta { text-align: center; }
+
+    .feedback-cta p { color: var(--ink-soft); max-width: 560px; margin: 0 auto 1.75rem; }
 
     form label {
       display: block;
@@ -296,14 +291,6 @@
     }
 
     form textarea { resize: vertical; min-height: 130px; }
-
-    .thank-you {
-      display: none;
-      text-align: center;
-      padding: 1.5rem 0;
-    }
-
-    .thank-you .big { font-size: 2.4rem; }
 
     /* ---------- Footer ---------- */
     footer {
@@ -547,29 +534,14 @@
           Sunshine Academy better for everyone.
         </p>
 
-        <div class="feedback-wrap">
-          <form id="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="feedback" />
-            <p style="display:none;">
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Jane Doe" required />
-
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@example.com" required />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
-
-            <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;">Send Feedback</button>
-          </form>
-
-          <div class="thank-you" id="thank-you" role="status">
-            <div class="big">☀️</div>
-            <h3>Thank you!</h3>
-            <p>Your message has been received. We appreciate you helping us shine brighter!</p>
-          </div>
+        <div class="feedback-cta">
+          <p>Fill out our quick feedback form — it only takes a minute!</p>
+          <a
+            class="btn btn-primary"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfL3N-8C2KooZo2hQMGzQSFWnsNqvkYAvhOX_RiloxVxWwsbA/viewform?usp=publish-editor"
+            target="_blank"
+            rel="noopener"
+          >Open Feedback Form</a>
         </div>
       </div>
     </section>
@@ -656,24 +628,6 @@
         /* settings.json unavailable (e.g. opened locally) — defaults stay */
       })
       .finally(() => applyLocalEdits());
-
-    document.getElementById("feedback-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = this;
-      const body = new URLSearchParams(new FormData(form)).toString();
-      const showThanks = () => {
-        form.style.display = "none";
-        document.getElementById("thank-you").style.display = "block";
-      };
-      if (location.protocol === "file:") return showThanks(); /* local preview */
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body
-      }).then(showThanks).catch(() => {
-        alert("Could not send right now — please try again.");
-      });
-    });
 
     /* ===== Preset-login inline editor ===== */
     const ADMIN_USER = "Daiyun";
