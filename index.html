@@ -295,6 +295,25 @@
 
     .social-link svg { display: block; }
 
+    .social-link.instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      box-shadow: var(--shadow);
+    }
+
+    .social-link.instagram:hover {
+      box-shadow: 0 14px 30px rgba(188, 24, 136, 0.3);
+    }
+
+    .social-link.facebook {
+      background: #1877f2;
+      box-shadow: var(--shadow);
+    }
+
+    .social-link.facebook:hover {
+      background: #0f62d0;
+      box-shadow: 0 14px 30px rgba(24, 119, 242, 0.35);
+    }
+
     form label {
       display: block;
       font-weight: 600;
@@ -586,7 +605,7 @@
         </p>
         <a
           id="instagram-link"
-          class="social-link"
+          class="social-link instagram"
           href="https://www.instagram.com/sunshine_tutoring_/"
           target="_blank"
           rel="noopener"
@@ -597,6 +616,21 @@
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
           @sunshine_tutoring_
+        </a>
+
+        <br /><br />
+
+        <a
+          id="facebook-link"
+          class="social-link facebook"
+          href="https://www.facebook.com/share/1DdafTtWsc/?mibextid=wwXIfr"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 21v-7h2.4l.36-3H13.5V9.35c0-.87.24-1.46 1.49-1.46h1.6V5.2c-.28-.04-1.23-.12-2.34-.12-2.32 0-3.9 1.41-3.9 4v1.92H8v3h2.35V21h3.15z"></path>
+          </svg>
+          Sunshine Tutoring on Facebook
         </a>
       </div>
     </section>
@@ -680,6 +714,8 @@
         setText("footer-tagline", data.footer_tagline);
         const ig = document.getElementById("instagram-link");
         if (ig && typeof data.instagram_url === "string") ig.href = data.instagram_url;
+        const fb = document.getElementById("facebook-link");
+        if (fb && typeof data.facebook_url === "string") fb.href = data.facebook_url;
       })
       .catch(() => {
         /* settings.json unavailable (e.g. opened locally) — defaults stay */
