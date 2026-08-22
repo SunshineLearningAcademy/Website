@@ -104,6 +104,11 @@ collections:
             name: "feedback_lead"
             widget: "text"
 
+          - label: "Socials — Instagram Link"
+            name: "instagram_url"
+            widget: "string"
+            required: false
+
           - label: "Footer — Tagline"
             name: "footer_tagline"
             widget: "string"

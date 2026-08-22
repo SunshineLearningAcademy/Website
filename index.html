@@ -266,6 +266,35 @@
 
     .feedback-cta p { color: var(--ink-soft); max-width: 560px; margin: 0 auto 1.75rem; }
 
+    /* ---------- Socials ---------- */
+    #socials {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    #socials .lead { margin-left: auto; margin-right: auto; max-width: 560px; }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.9rem;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(188, 24, 136, 0.3);
+    }
+
+    .social-link svg { display: block; }
+
     form label {
       display: block;
       font-weight: 600;
@@ -545,6 +574,32 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== Socials ===== -->
+    <section id="socials">
+      <div class="section-inner">
+        <span class="eyebrow">Follow Us</span>
+        <h2>Socials</h2>
+        <p class="lead">
+          Keep up with Sunshine Tutoring — see session highlights, student wins,
+          and announcements on Instagram.
+        </p>
+        <a
+          id="instagram-link"
+          class="social-link"
+          href="https://www.instagram.com/sunshine_tutoring_/"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          @sunshine_tutoring_
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- ===== Footer ===== -->
@@ -623,6 +678,8 @@
         setText("feedback-heading", data.feedback_heading);
         setText("feedback-lead", data.feedback_lead);
         setText("footer-tagline", data.footer_tagline);
+        const ig = document.getElementById("instagram-link");
+        if (ig && typeof data.instagram_url === "string") ig.href = data.instagram_url;
       })
       .catch(() => {
         /* settings.json unavailable (e.g. opened locally) — defaults stay */
