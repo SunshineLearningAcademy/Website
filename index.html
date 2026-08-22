@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunshine Academy | Free Tutoring &amp; Education Support</title>
+  <meta name="description" content="Sunshine Academy is a nonprofit providing free tutoring and academic support to students in our community." />
+  <style>
+    :root {
+      --sun-yellow: #fbbf24;
+      --sun-orange: #f59e0b;
+      --sun-deep: #d97706;
+      --ink: #1f2937;
+      --ink-soft: #4b5563;
+      --cream: #fffbeb;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(217, 119, 6, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--sun-deep);
+      text-decoration: none;
+    }
+
+    .brand .sun {
+      width: 34px;
+      height: 34px;
+      background: radial-gradient(circle at 35% 35%, var(--sun-yellow), var(--sun-orange));
+      border-radius: 50%;
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.55);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover { color: var(--sun-deep); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4.5rem;
+      background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      max-width: 800px;
+      margin: 0 auto 1rem;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(90deg, var(--sun-orange), var(--sun-yellow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      color: var(--ink-soft);
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--sun-orange), var(--sun-yellow));
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(217, 119, 6, 0.28); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 4rem 1.5rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sun-deep);
+      background: #fef3c7;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+      margin-bottom: 1rem;
+    }
+
+    .lead { color: var(--ink-soft); max-width: 700px; margin-bottom: 2.5rem; }
+
+    /* ---------- Location & Times ---------- */
+    #location-times { background: var(--white); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: var(--cream);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--sun-yellow);
+    }
+
+    .card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p, .card li { color: var(--ink-soft); }
+
+    .card ul { list-style: none; }
+
+    .card li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed #fcd34d;
+    }
+
+    .card li:last-child { border-bottom: none; }
+    .card li strong { color: var(--ink); white-space: nowrap; }
+
+    /* ---------- About ---------- */
+    #about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .value {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .value h3 { color: var(--sun-deep); margin-bottom: 0.5rem; font-size: 1.05rem; }
+    .value p { color: var(--ink-soft); font-size: 0.95rem; }
+
+    /* ---------- Feedback ---------- */
+    #feedback { background: var(--white); }
+
+    .feedback-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    form label {
+      display: block;
+      font-weight: 600;
+      margin: 1.1rem 0 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font: inherit;
+      background: var(--white);
+      transition: border-color 0.2s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: var(--sun-orange);
+    }
+
+    form textarea { resize: vertical; min-height: 130px; }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .thank-you .big { font-size: 2.4rem; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--ink);
+      color: #d1d5db;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer strong { color: var(--sun-yellow); }
+
+    /* ---------- Admin link ---------- */
+    .btn-login {
+      background: transparent;
+      color: var(--sun-deep);
+      border: 2px solid var(--sun-yellow);
+      padding: 0.45rem 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="nav">
+      <a class="brand" href="#top">
+        <span class="sun" aria-hidden="true"></span>
+        Sunshine Academy
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#location-times">Location &amp; Times</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-login" href="admin/">Admin</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <div class="hero">
+      <h1><span id="hero-intro">Helping Every Student</span> <span class="accent" id="hero-accent">Shine Bright</span></h1>
+      <p id="hero-text">
+        Sunshine Academy is a nonprofit tutoring organization offering free academic
+        support to students of all ages — because every child deserves the chance
+        to succeed.
+      </p>
+      <a href="#location-times" class="btn btn-primary" id="hero-btn">Visit Us</a>
+    </div>
+
+    <!-- ===== Location & Times ===== -->
+    <section id="location-times">
+      <div class="section-inner">
+        <span class="eyebrow">Find Us</span>
+        <h2>Location &amp; Times</h2>
+        <p class="lead">Drop by during our open hours — no appointment needed.</p>
+
+        <div class="info-grid">
+          <div class="card">
+            <h3>📍 Our Location</h3>
+            <p><strong id="address-line1">[Street Address]</strong><br /><span id="address-line2">[City, State ZIP]</span></p>
+            <p style="margin-top: 0.75rem;">Phone: <span id="phone">[Phone Number]</span><br />Email: <span id="email">[Email Address]</span></p>
+          </div>
+
+          <div class="card">
+            <h3>🕒 Open Hours</h3>
+            <ul>
+              <li><strong>Mon – Fri</strong> <span id="hours-mon-fri">[3:00 PM – 7:00 PM]</span></li>
+              <li><strong>Saturday</strong> <span id="hours-saturday">[10:00 AM – 2:00 PM]</span></li>
+              <li><strong>Sunday</strong> <span id="hours-sunday">Closed</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>📚 Session Schedule</h3>
+            <ul>
+              <li><strong id="sess1-name">Tutoring Sessions</strong> <span id="sess1-time">[Hourly, by sign-up]</span></li>
+              <li><strong id="sess2-name">Homework Help</strong> <span id="sess2-time">[Walk-in, daily]</span></li>
+              <li><strong id="sess3-name">Test Prep Workshops</strong> <span id="sess3-time">[Sat mornings]</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About Us ===== -->
+    <section id="about">
+      <div class="section-inner">
+        <span class="eyebrow">Who We Are</span>
+        <h2>About Sunshine Academy</h2>
+        <p class="lead" id="about-lead">
+          Founded on the belief that education changes lives, Sunshine Academy is a
+          community-powered nonprofit dedicated to giving students the tools,
+          confidence, and support they need to reach their full potential.
+        </p>
+
+        <div class="about-grid">
+          <div class="value">
+            <h3>Our Mission</h3>
+            <p id="mission-text">To provide free, high-quality tutoring and mentorship that empowers every student to succeed academically and beyond.</p>
+          </div>
+          <div class="value">
+            <h3>Our Vision</h3>
+            <p id="vision-text">A community where every child — regardless of circumstance — has access to the educational support they deserve.</p>
+          </div>
+          <div class="value">
+            <h3>Our Values</h3>
+            <p id="values-text">Compassion, equity, patience, and perseverance guide everything we do, from one-on-one sessions to group workshops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Feedback ===== -->
+    <section id="feedback">
+      <div class="section-inner">
+        <span class="eyebrow">We'd Love to Hear From You</span>
+        <h2 id="feedback-heading">Share Your Feedback</h2>
+        <p class="lead" style="margin-bottom: 1.5rem;" id="feedback-lead">
+          Questions, suggestions, or kind words? Your feedback helps us make
+          Sunshine Academy better for everyone.
+        </p>
+
+        <div class="feedback-wrap">
+          <form id="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="feedback" />
+            <p style="display:none;">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;">Send Feedback</button>
+          </form>
+
+          <div class="thank-you" id="thank-you" role="status">
+            <div class="big">☀️</div>
+            <h3>Thank you!</h3>
+            <p>Your message has been received. We appreciate you helping us shine brighter!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p><strong>☀ Sunshine Academy</strong> — <span id="footer-tagline">Helping every student shine bright.</span></p>
+    <p>&copy; <span id="year"></span> Sunshine Academy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ===== Load content edited via the /admin CMS ===== */
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el && typeof value === "string") el.textContent = value;
+    }
+
+    fetch("content/settings.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data) return;
+        setText("hero-intro", data.hero_title_intro);
+        setText("hero-accent", data.hero_title_accent);
+        setText("hero-text", data.hero_text);
+        setText("hero-btn", data.hero_button_text);
+        setText("address-line1", data.address_line1);
+        setText("address-line2", data.address_line2);
+        setText("phone", data.phone);
+        setText("email", data.email);
+        setText("hours-mon-fri", data.hours_mon_fri);
+        setText("hours-saturday", data.hours_saturday);
+        setText("hours-sunday", data.hours_sunday);
+        setText("sess1-name", data.session_1_name);
+        setText("sess1-time", data.session_1_time);
+        setText("sess2-name", data.session_2_name);
+        setText("sess2-time", data.session_2_time);
+        setText("sess3-name", data.session_3_name);
+        setText("sess3-time", data.session_3_time);
+        setText("about-lead", data.about_lead);
+        setText("mission-text", data.mission_text);
+        setText("vision-text", data.vision_text);
+        setText("values-text", data.values_text);
+        setText("feedback-heading", data.feedback_heading);
+        setText("feedback-lead", data.feedback_lead);
+        setText("footer-tagline", data.footer_tagline);
+      })
+      .catch(() => {
+        /* settings.json unavailable (e.g. opened locally) — defaults stay */
+      });
+
+    document.getElementById("feedback-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = this;
+      const body = new URLSearchParams(new FormData(form)).toString();
+      const showThanks = () => {
+        form.style.display = "none";
+        document.getElementById("thank-you").style.display = "block";
+      };
+      if (location.protocol === "file:") return showThanks(); /* local preview */
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body
+      }).then(showThanks).catch(() => {
+        alert("Could not send right now — please try again.");
+      });
+    });
+  </script>
+</body>
+</html>

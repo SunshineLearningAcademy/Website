@@ -1,0 +1,107 @@
+# Decap CMS configuration for Sunshine Academy
+#
+# Before the /admin page works, do these ONE-TIME steps in your Netlify dashboard:
+#   1. Site configuration -> Identity -> Enable Identity (set to "Invite only")
+#   2. Identity -> Invite users -> invite your email address
+#   3. Accept the email invite and set a password
+#   4. Site configuration -> Identity -> Git Gateway -> Enable Git Gateway
+# Then visit https://YOUR-SITE.netlify.app/admin/ and log in.
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Content"
+    files:
+      - name: "settings"
+        label: "Site Content"
+        file: "content/settings.json"
+        format: "json"
+        fields:
+          - label: "Hero — Title (first part)"
+            name: "hero_title_intro"
+            widget: "string"
+          - label: "Hero — Title (highlighted part)"
+            name: "hero_title_accent"
+            widget: "string"
+          - label: "Hero — Subtitle"
+            name: "hero_text"
+            widget: "text"
+          - label: "Hero — Button Text"
+            name: "hero_button_text"
+            widget: "string"
+
+          - label: "Location — Address Line 1 (street)"
+            name: "address_line1"
+            widget: "string"
+            required: false
+          - label: "Location — Address Line 2 (city, state ZIP)"
+            name: "address_line2"
+            widget: "string"
+            required: false
+          - label: "Location — Phone"
+            name: "phone"
+            widget: "string"
+            required: false
+          - label: "Location — Email"
+            name: "email"
+            widget: "string"
+            required: false
+
+          - label: "Hours — Mon–Fri"
+            name: "hours_mon_fri"
+            widget: "string"
+          - label: "Hours — Saturday"
+            name: "hours_saturday"
+            widget: "string"
+          - label: "Hours — Sunday"
+            name: "hours_sunday"
+            widget: "string"
+
+          - label: "Sessions — Row 1 Name"
+            name: "session_1_name"
+            widget: "string"
+          - label: "Sessions — Row 1 Time"
+            name: "session_1_time"
+            widget: "string"
+          - label: "Sessions — Row 2 Name"
+            name: "session_2_name"
+            widget: "string"
+          - label: "Sessions — Row 2 Time"
+            name: "session_2_time"
+            widget: "string"
+          - label: "Sessions — Row 3 Name"
+            name: "session_3_name"
+            widget: "string"
+          - label: "Sessions — Row 3 Time"
+            name: "session_3_time"
+            widget: "string"
+
+          - label: "About — Introduction"
+            name: "about_lead"
+            widget: "text"
+          - label: "About — Mission"
+            name: "mission_text"
+            widget: "text"
+          - label: "About — Vision"
+            name: "vision_text"
+            widget: "text"
+          - label: "About — Values"
+            name: "values_text"
+            widget: "text"
+
+          - label: "Feedback — Heading"
+            name: "feedback_heading"
+            widget: "string"
+          - label: "Feedback — Intro Text"
+            name: "feedback_lead"
+            widget: "text"
+
+          - label: "Footer — Tagline"
+            name: "footer_tagline"
+            widget: "string"
