@@ -284,6 +284,81 @@
       font-size: 0.9rem;
     }
 
+    /* ---------- Inline Editor ---------- */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 41, 55, 0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 2rem;
+      width: min(360px, 100%);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal h3 { margin-bottom: 1rem; text-align: center; }
+
+    .modal .error {
+      display: none;
+      color: #dc2626;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    .admin-bar {
+      display: none;
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 1.25rem;
+      z-index: 150;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--ink);
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .admin-bar span { color: var(--sun-yellow); font-size: 0.85rem; font-weight: 700; padding-left: 0.5rem; }
+
+    .admin-bar button {
+      border: none;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+    }
+
+    #save-btn { background: var(--sun-yellow); color: var(--ink); }
+    #reset-btn { background: #6b7280; color: var(--white); }
+    #logout-btn { background: var(--white); color: var(--ink); }
+
+    body.edit-mode a { pointer-events: none; }
+
+    body.edit-mode [contenteditable="true"] {
+      outline: 2px dashed var(--sun-orange);
+      outline-offset: 4px;
+      border-radius: 6px;
+      cursor: text;
+    }
+
     @media (max-width: 600px) {
       .nav { justify-content: center; }
     }
@@ -305,7 +380,7 @@
           <li><a href="#feedback">Feedback</a></li>
         </ul>
       </nav>
-      <a class="btn btn-login" href="admin/">Admin</a>
+      <button class="btn btn-login" id="login-btn" type="button">Login</button>
     </div>
   </header>
 
@@ -313,13 +388,13 @@
 
     <!-- ===== Hero ===== -->
     <div class="hero">
-      <h1><span id="hero-intro">Helping Every Student</span> <span class="accent" id="hero-accent">Shine Bright</span></h1>
-      <p id="hero-text">
+      <h1 data-editable="hero-title"><span id="hero-intro">Helping Every Student</span> <span class="accent" id="hero-accent">Shine Bright</span></h1>
+      <p id="hero-text" data-editable="hero-text">
         Sunshine Academy is a nonprofit tutoring organization offering free academic
         support to students of all ages — because every child deserves the chance
         to succeed.
       </p>
-      <a href="#location-times" class="btn btn-primary" id="hero-btn">Visit Us</a>
+      <a href="#location-times" class="btn btn-primary" id="hero-btn" data-editable="hero-btn">Visit Us</a>
     </div>
 
     <!-- ===== Location & Times ===== -->
@@ -330,13 +405,13 @@
         <p class="lead">Drop by during our open hours — no appointment needed.</p>
 
         <div class="info-grid">
-          <div class="card">
+          <div class="card" data-editable="card-location">
             <h3>📍 Our Location</h3>
             <p><strong id="address-line1">[Street Address]</strong><br /><span id="address-line2">[City, State ZIP]</span></p>
             <p style="margin-top: 0.75rem;">Phone: <span id="phone">[Phone Number]</span><br />Email: <span id="email">[Email Address]</span></p>
           </div>
 
-          <div class="card">
+          <div class="card" data-editable="card-hours">
             <h3>🕒 Open Hours</h3>
             <ul>
               <li><strong>Mon – Fri</strong> <span id="hours-mon-fri">[3:00 PM – 7:00 PM]</span></li>
@@ -345,7 +420,7 @@
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" data-editable="card-sessions">
             <h3>📚 Session Schedule</h3>
             <ul>
               <li><strong id="sess1-name">Tutoring Sessions</strong> <span id="sess1-time">[Hourly, by sign-up]</span></li>
@@ -362,7 +437,7 @@
       <div class="section-inner">
         <span class="eyebrow">Who We Are</span>
         <h2>About Sunshine Academy</h2>
-        <p class="lead" id="about-lead">
+        <p class="lead" id="about-lead" data-editable="about-lead">
           Founded on the belief that education changes lives, Sunshine Academy is a
           community-powered nonprofit dedicated to giving students the tools,
           confidence, and support they need to reach their full potential.
@@ -371,15 +446,15 @@
         <div class="about-grid">
           <div class="value">
             <h3>Our Mission</h3>
-            <p id="mission-text">To provide free, high-quality tutoring and mentorship that empowers every student to succeed academically and beyond.</p>
+            <p id="mission-text" data-editable="mission-text">To provide free, high-quality tutoring and mentorship that empowers every student to succeed academically and beyond.</p>
           </div>
           <div class="value">
             <h3>Our Vision</h3>
-            <p id="vision-text">A community where every child — regardless of circumstance — has access to the educational support they deserve.</p>
+            <p id="vision-text" data-editable="vision-text">A community where every child — regardless of circumstance — has access to the educational support they deserve.</p>
           </div>
           <div class="value">
             <h3>Our Values</h3>
-            <p id="values-text">Compassion, equity, patience, and perseverance guide everything we do, from one-on-one sessions to group workshops.</p>
+            <p id="values-text" data-editable="values-text">Compassion, equity, patience, and perseverance guide everything we do, from one-on-one sessions to group workshops.</p>
           </div>
         </div>
       </div>
@@ -389,8 +464,8 @@
     <section id="feedback">
       <div class="section-inner">
         <span class="eyebrow">We'd Love to Hear From You</span>
-        <h2 id="feedback-heading">Share Your Feedback</h2>
-        <p class="lead" style="margin-bottom: 1.5rem;" id="feedback-lead">
+        <h2 id="feedback-heading" data-editable="feedback-heading">Share Your Feedback</h2>
+        <p class="lead" style="margin-bottom: 1.5rem;" id="feedback-lead" data-editable="feedback-lead">
           Questions, suggestions, or kind words? Your feedback helps us make
           Sunshine Academy better for everyone.
         </p>
@@ -425,9 +500,32 @@
 
   <!-- ===== Footer ===== -->
   <footer>
-    <p><strong>☀ Sunshine Academy</strong> — <span id="footer-tagline">Helping every student shine bright.</span></p>
+    <p><strong>☀ Sunshine Academy</strong> — <span id="footer-tagline" data-editable="footer-tagline">Helping every student shine bright.</span></p>
     <p>&copy; <span id="year"></span> Sunshine Academy. All rights reserved.</p>
   </footer>
+
+  <!-- ===== Login Modal ===== -->
+  <div class="modal-backdrop" id="login-modal">
+    <div class="modal" role="dialog" aria-labelledby="login-title">
+      <h3 id="login-title">Admin Login</h3>
+      <form id="login-form">
+        <label for="username">Username</label>
+        <input type="text" id="username" autocomplete="username" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" autocomplete="current-password" required />
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Log In</button>
+      </form>
+      <p class="error" id="login-error">Incorrect username or password.</p>
+    </div>
+  </div>
+
+  <!-- ===== Editor Toolbar ===== -->
+  <div class="admin-bar" id="admin-bar">
+    <span>✏ Edit Mode</span>
+    <button type="button" id="save-btn">Save Changes</button>
+    <button type="button" id="reset-btn">Reset Page</button>
+    <button type="button" id="logout-btn">Logout</button>
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -469,7 +567,8 @@
       })
       .catch(() => {
         /* settings.json unavailable (e.g. opened locally) — defaults stay */
-      });
+      })
+      .finally(() => applyLocalEdits());
 
     document.getElementById("feedback-form").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -488,14 +587,106 @@
         alert("Could not send right now — please try again.");
       });
     });
-  </script>
 
-  <!-- Netlify Identity: processes invite/password-reset links on any page -->
-  <script src="https://unpkg.com/netlify-identity-widget@1.2.2/build/netlify-identity-widget.js"></script>
-  <script>
-    netlifyIdentity.init();
-    netlifyIdentity.on("login", () => setTimeout(() => location.reload(), 800));
-    netlifyIdentity.on("logout", () => location.reload());
+    /* ===== Preset-login inline editor ===== */
+    const ADMIN_USER = "Daiyun";
+    const ADMIN_PASS = "Daiyun";
+    const EDIT_KEY = "sa-inline:";
+
+    const loginBtn = document.getElementById("login-btn");
+    const loginModal = document.getElementById("login-modal");
+    const loginForm = document.getElementById("login-form");
+    const loginError = document.getElementById("login-error");
+    const adminBar = document.getElementById("admin-bar");
+
+    const isLoggedIn = () => sessionStorage.getItem("sa-admin") === "1";
+    const editables = () => document.querySelectorAll("[data-editable]");
+
+    function applyLocalEdits() {
+      editables().forEach((el) => {
+        const saved = localStorage.getItem(EDIT_KEY + el.dataset.editable);
+        if (saved !== null) el.innerHTML = saved;
+      });
+    }
+
+    function applyEditMode(on) {
+      editables().forEach((el) =>
+        el.setAttribute("contenteditable", on ? "true" : "false")
+      );
+      document.body.classList.toggle("edit-mode", on);
+      adminBar.style.display = on ? "flex" : "none";
+      loginBtn.textContent = on ? "Logout" : "Login";
+    }
+
+    function openModal() {
+      loginModal.classList.add("open");
+      loginError.style.display = "none";
+      document.getElementById("username").focus();
+    }
+
+    function closeModal() {
+      loginModal.classList.remove("open");
+      loginForm.reset();
+    }
+
+    loginBtn.addEventListener("click", () => {
+      if (isLoggedIn()) {
+        sessionStorage.removeItem("sa-admin");
+        applyEditMode(false);
+      } else {
+        openModal();
+      }
+    });
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value;
+      if (user === ADMIN_USER && pass === ADMIN_PASS) {
+        sessionStorage.setItem("sa-admin", "1");
+        closeModal();
+        applyEditMode(true);
+      } else {
+        loginError.style.display = "block";
+      }
+    });
+
+    loginModal.addEventListener("click", (e) => {
+      if (e.target === loginModal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    document.getElementById("save-btn").addEventListener("click", () => {
+      try {
+        editables().forEach((el) =>
+          localStorage.setItem(EDIT_KEY + el.dataset.editable, el.innerHTML)
+        );
+        alert(
+          "Saved! Note: these edits show in THIS browser only.\n" +
+          "To publish them for everyone, update content/settings.json on GitHub."
+        );
+      } catch (err) {
+        alert("Could not save changes in this browser.");
+      }
+    });
+
+    document.getElementById("reset-btn").addEventListener("click", () => {
+      if (!confirm("Reset the page to its published content?")) return;
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith(EDIT_KEY))
+        .forEach((k) => localStorage.removeItem(k));
+      location.reload();
+    });
+
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      sessionStorage.removeItem("sa-admin");
+      applyEditMode(false);
+    });
+
+    applyEditMode(isLoggedIn());
   </script>
 </body>
 </html>
