@@ -218,6 +218,47 @@
     .value h3 { color: var(--sun-deep); margin-bottom: 0.5rem; font-size: 1.05rem; }
     .value p { color: var(--ink-soft); font-size: 0.95rem; }
 
+    /* ---------- Team ---------- */
+    .team-heading {
+      margin-top: 3.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-sub { color: var(--ink-soft); margin-bottom: 1.75rem; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .member {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-bottom: 4px solid var(--sun-yellow);
+    }
+
+    .member .avatar {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 0.8rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sun-orange), var(--sun-yellow));
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .member h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .member p { color: var(--ink-soft); font-size: 0.9rem; }
+
     /* ---------- Feedback ---------- */
     #feedback { background: var(--white); }
 
@@ -457,6 +498,43 @@
             <p id="values-text" data-editable="values-text">Compassion, equity, patience, and perseverance guide everything we do, from one-on-one sessions to group workshops.</p>
           </div>
         </div>
+
+        <div class="team">
+          <h3 class="team-heading">Meet Our Team</h3>
+          <p class="team-sub">The people behind Sunshine Academy.</p>
+          <div class="team-grid">
+            <div class="member" data-editable="member-daiyun">
+              <div class="avatar">D</div>
+              <h4 id="daiyun-name" data-editable="daiyun-name">Daiyun</h4>
+              <p id="daiyun-bio" data-editable="daiyun-bio">Write a short description about Daiyun here...</p>
+            </div>
+            <div class="member" data-editable="member-aditya">
+              <div class="avatar">A</div>
+              <h4 id="aditya-name" data-editable="aditya-name">Aditya</h4>
+              <p id="aditya-bio" data-editable="aditya-bio">Write a short description about Aditya here...</p>
+            </div>
+            <div class="member" data-editable="member-luke">
+              <div class="avatar">L</div>
+              <h4 id="luke-name" data-editable="luke-name">Luke</h4>
+              <p id="luke-bio" data-editable="luke-bio">Write a short description about Luke here...</p>
+            </div>
+            <div class="member" data-editable="member-jimi">
+              <div class="avatar">J</div>
+              <h4 id="jimi-name" data-editable="jimi-name">Jimi</h4>
+              <p id="jimi-bio" data-editable="jimi-bio">Write a short description about Jimi here...</p>
+            </div>
+            <div class="member" data-editable="member-xochitl">
+              <div class="avatar">X</div>
+              <h4 id="xochitl-name" data-editable="xochitl-name">Xochitl</h4>
+              <p id="xochitl-bio" data-editable="xochitl-bio">Write a short description about Xochitl here...</p>
+            </div>
+            <div class="member" data-editable="member-jayden">
+              <div class="avatar">J</div>
+              <h4 id="jayden-name" data-editable="jayden-name">Jayden</h4>
+              <p id="jayden-bio" data-editable="jayden-bio">Write a short description about Jayden here...</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -561,6 +639,18 @@
         setText("mission-text", data.mission_text);
         setText("vision-text", data.vision_text);
         setText("values-text", data.values_text);
+        setText("daiyun-name", data.name_daiyun);
+        setText("daiyun-bio", data.bio_daiyun);
+        setText("aditya-name", data.name_aditya);
+        setText("aditya-bio", data.bio_aditya);
+        setText("luke-name", data.name_luke);
+        setText("luke-bio", data.bio_luke);
+        setText("jimi-name", data.name_jimi);
+        setText("jimi-bio", data.bio_jimi);
+        setText("xochitl-name", data.name_xochitl);
+        setText("xochitl-bio", data.bio_xochitl);
+        setText("jayden-name", data.name_jayden);
+        setText("jayden-bio", data.bio_jayden);
         setText("feedback-heading", data.feedback_heading);
         setText("feedback-lead", data.feedback_lead);
         setText("footer-tagline", data.footer_tagline);
