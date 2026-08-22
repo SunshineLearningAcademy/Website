@@ -11,6 +11,8 @@ backend:
   name: git-gateway
   branch: main
 
+site_url: https://graceful-cucurucho-658ced.netlify.app
+
 media_folder: "images"
 public_folder: "/images"
 

@@ -489,5 +489,13 @@
       });
     });
   </script>
+
+  <!-- Netlify Identity: processes invite/password-reset links on any page -->
+  <script src="https://unpkg.com/netlify-identity-widget@1.2.2/build/netlify-identity-widget.js"></script>
+  <script>
+    netlifyIdentity.init();
+    netlifyIdentity.on("login", () => setTimeout(() => location.reload(), 800));
+    netlifyIdentity.on("logout", () => location.reload());
+  </script>
 </body>
 </html>
