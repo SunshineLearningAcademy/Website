@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sunshine Academy | Free Tutoring &amp; Education Support</title>
   <meta name="description" content="Sunshine Academy is a nonprofit providing free tutoring and academic support to students in our community." />
+  <link rel="icon" type="image/png" href="logo.png" />
   <style>
     :root {
       --sun-yellow: #fbbf24;
@@ -58,12 +59,11 @@
       text-decoration: none;
     }
 
-    .brand .sun {
-      width: 34px;
-      height: 34px;
-      background: radial-gradient(circle at 35% 35%, var(--sun-yellow), var(--sun-orange));
-      border-radius: 50%;
-      box-shadow: 0 0 14px rgba(245, 158, 11, 0.55);
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
     }
 
     nav ul {
@@ -398,7 +398,7 @@
   <header>
     <div class="nav">
       <a class="brand" href="#top">
-        <span class="sun" aria-hidden="true"></span>
+        <img src="logo.png" alt="Sunshine Tutoring logo" />
         Sunshine Academy
       </a>
       <nav aria-label="Main navigation">
