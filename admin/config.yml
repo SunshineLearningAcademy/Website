@@ -1,4 +1,4 @@
-# Decap CMS configuration for Sunshine Academy
+# Decap CMS configuration for Sunshine Tutoring
 #
 # Before the /admin page works, do these ONE-TIME steps in your Netlify dashboard:
 #   1. Site configuration -> Identity -> Enable Identity (set to "Invite only")
